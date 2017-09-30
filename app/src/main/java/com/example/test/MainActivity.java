@@ -23,13 +23,14 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "file.sav";
     ListView listView;
-    private ArrayList<Counter> counters; //= new ArrayList<>();
+    private ArrayList<Counter> counters = new ArrayList<>();
     private ArrayAdapter<Counter> mAdapter;
 
     @Override
