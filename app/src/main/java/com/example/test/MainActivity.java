@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, CounterInterface.class);
                 //intent.putExtra("CountryName", listView.getItemAtPosition(i).toString());
+                intent.putExtra("index",i);
+                intent.putExtra("initialValue", counters.get(i).getInitialValue());
+                intent.putExtra("date", counters.get(i).getDate());
+                intent.putExtra("comment", counters.get(i).getComment());
                 intent.putExtra("CounterName", counters.get(i).getName());
                 intent.putExtra("currentValuer", counters.get(i).getCurrentValue());
                 startActivityForResult(intent,1);

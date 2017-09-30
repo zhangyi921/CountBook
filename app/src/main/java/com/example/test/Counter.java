@@ -34,7 +34,20 @@ public class Counter {
     public int getCurrentValue(){
         return this.currentValue;
     }
+    public int getInitialValue(){
+        return initialValue;
+    }
+    public String getDate(){
+        return date.toString();
+    }
+    public String getComment(){
+        return comment;
+    }
     public void setCurrentValue(int val){
         this.currentValue = val;
     }
+    public void setDate(){
+        date = new Date();
+    }
+
 }
