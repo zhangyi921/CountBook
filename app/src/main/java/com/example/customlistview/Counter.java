@@ -1,4 +1,4 @@
-package com.example.countbook;
+package com.example.customlistview;
 
 import java.util.Date;
 
@@ -7,6 +7,7 @@ import java.util.Date;
  */
 
 public class Counter {
+
     private String name;
     private int initialValue;
     private int currentValue;
@@ -26,5 +27,11 @@ public class Counter {
         this.currentValue = initialValue;
         this.date = new Date();
         this.comment = comment;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public int getCurrentValue(){
+        return this.currentValue;
     }
 }
