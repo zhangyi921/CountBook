@@ -55,5 +55,9 @@ public class Counter {
     public void setInitialValue(int initia){
         initialValue = initia;
     }
+    public String toString(){
+        Integer cur = new Integer(currentValue);
+        return "  Name: "+name+" Current Value: "+cur.toString()+" Date: "+date.toString();
+    }
 
 }
