@@ -57,9 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-                String result=data.getStringExtra("result1");
+                int counterIndex = data.getIntExtra("counterIndex",-1);
                 String result2 = data.getStringExtra("result2");
-                Log.i("debug",result);
+                counters.get(counterIndex).setCurrentValue(5);
+                if (counters.get(counterIndex).getCurrentValue() == 5){
+                    Log.i("debug","current value has been reset");
+                }
+
                 Log.i("debug", result2);
             }
             if (resultCode == Activity.RESULT_CANCELED) {

@@ -34,4 +34,7 @@ public class Counter {
     public int getCurrentValue(){
         return this.currentValue;
     }
+    public void setCurrentValue(int val){
+        this.currentValue = val;
+    }
 }

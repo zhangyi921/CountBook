@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class CounterInterface extends AppCompatActivity {
+    private int currentValuer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class CounterInterface extends AppCompatActivity {
             String CounterName = mBundle.getString("CounterName");
 
             Log.i("debug", CounterName);
-            int currentValuer = mBundle.getInt("currentValuer");
+            currentValuer = mBundle.getInt("currentValuer");
             String val;
             if (currentValuer == 0) {
                 val = "0";
@@ -33,8 +34,8 @@ public class CounterInterface extends AppCompatActivity {
             public void onClick(View v){
                 Log.i("debug","button pressed");
                 Intent returnIntent = new Intent();
-                String result = "result1";
-                returnIntent.putExtra("result1",result);
+                //String result = "result1";
+                returnIntent.putExtra("counterIndex",currentValuer);
                 returnIntent.putExtra("result2","result2");
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
