@@ -49,5 +49,11 @@ public class Counter {
     public void setDate(){
         date = new Date();
     }
+    public void setComment(String com){
+        comment = com;
+    }
+    public void setInitialValue(int initia){
+        initialValue = initia;
+    }
 
 }

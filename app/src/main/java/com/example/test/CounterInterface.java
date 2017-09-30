@@ -55,8 +55,21 @@ public class CounterInterface extends AppCompatActivity {
                 Intent returnIntent = new Intent();
                 //String result = "result1";
                 returnIntent.putExtra("counterIndex",counterIndex);
-                returnIntent.putExtra("result2","result2");
+                Integer temp = new Integer(InitialVal.getText().toString());
+                returnIntent.putExtra("initialValue", temp);
+                returnIntent.putExtra("currentValuer", currentValuer);
+                returnIntent.putExtra("comment",Comment.getText().toString());
                 setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+            }
+        });
+        Button delet = (Button) findViewById(R.id.delet);
+        delet.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Log.i("debug","button pressed");
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("counterIndex",counterIndex);
+                setResult(Activity.RESULT_CANCELED,returnIntent);
                 finish();
             }
         });
@@ -77,7 +90,7 @@ public class CounterInterface extends AppCompatActivity {
                     Integer temp = new Integer(currentValuer);
                     CurrentVal.setText(temp.toString());
                 }
-                
+
             }
         });
         Button reset = (Button) findViewById(R.id.Rest);

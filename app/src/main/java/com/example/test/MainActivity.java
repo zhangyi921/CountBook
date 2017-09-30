@@ -62,16 +62,21 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 int counterIndex = data.getIntExtra("counterIndex",-1);
-                String result2 = data.getStringExtra("result2");
-                counters.get(counterIndex).setCurrentValue(5);
-                if (counters.get(counterIndex).getCurrentValue() == 5){
-                    Log.i("debug","current value has been reset");
-                }
+                String comment = data.getStringExtra("comment");
+                counters.get(counterIndex).setCurrentValue(data.getIntExtra("currentValuer",-1));
+                counters.get(counterIndex).setInitialValue(data.getIntExtra("initialValue", -1));
+                counters.get(counterIndex).setComment(comment);
+                counters.get(counterIndex).setDate();
+//                if (counters.get(counterIndex).getCurrentValue() == 5){
+//                    Log.i("debug","current value has been reset");
+//                }
 
-                Log.i("debug", result2);
+                //Log.i("debug", result2);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
+                //delete current counter
+                counters.remove(data.getIntExtra("counterIndex",-1));
+                mAdapter.notifyDataSetChanged();
             }
         }
     }
