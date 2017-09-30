@@ -33,8 +33,9 @@ public class CounterInterface extends AppCompatActivity {
             public void onClick(View v){
                 Log.i("debug","button pressed");
                 Intent returnIntent = new Intent();
-                String result = "result";
-                returnIntent.putExtra("result",result);
+                String result = "result1";
+                returnIntent.putExtra("result1",result);
+                returnIntent.putExtra("result2","result2");
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }

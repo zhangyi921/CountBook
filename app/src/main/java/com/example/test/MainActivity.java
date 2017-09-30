@@ -57,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-                String result=data.getStringExtra("result");
+                String result=data.getStringExtra("result1");
+                String result2 = data.getStringExtra("result2");
                 Log.i("debug",result);
+                Log.i("debug", result2);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
