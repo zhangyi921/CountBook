@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -54,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         listView.setAdapter(mAdapter);
+        Button add = (Button) findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, CreateInterface.class);
+                startActivityForResult(intent,2);
+            }
+        });
     }
 
     @Override
@@ -67,15 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 counters.get(counterIndex).setInitialValue(data.getIntExtra("initialValue", -1));
                 counters.get(counterIndex).setComment(comment);
                 counters.get(counterIndex).setDate();
-//                if (counters.get(counterIndex).getCurrentValue() == 5){
-//                    Log.i("debug","current value has been reset");
-//                }
 
-                //Log.i("debug", result2);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //delete current counter
                 counters.remove(data.getIntExtra("counterIndex",-1));
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+        else if (requestCode == 2){
+            if (resultCode == Activity.RESULT_OK){
+                counters.add(new Counter(data.getStringExtra("name"),
+                        data.getIntExtra("initialValue",-1),
+                        data.getStringExtra("comment")));
                 mAdapter.notifyDataSetChanged();
             }
         }
