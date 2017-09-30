@@ -29,7 +29,7 @@ import com.google.gson.reflect.TypeToken;
 public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "file.sav";
     ListView listView;
-    private ArrayList<Counter> counters = new ArrayList<>();
+    private ArrayList<Counter> counters; //= new ArrayList<>();
     private ArrayAdapter<Counter> mAdapter;
 
     @Override
