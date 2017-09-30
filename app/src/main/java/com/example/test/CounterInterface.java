@@ -1,27 +1,20 @@
-package com.example.customlistview;
+package com.example.test;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
-public class ListActivity extends AppCompatActivity {
-
-    //ListView listView;
-    String[] states;
-
+public class CounterInterface extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_counter_interface);
 
-        //listView = (ListView) findViewById(R.id.listView);
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
             String CounterName = mBundle.getString("CounterName");
@@ -47,5 +40,4 @@ public class ListActivity extends AppCompatActivity {
             }
         });
     }
-
 }

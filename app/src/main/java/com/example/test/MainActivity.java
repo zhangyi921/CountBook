@@ -1,9 +1,9 @@
-package com.example.customlistview;
+package com.example.test;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -13,14 +13,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import static android.R.attr.data;
-
 public class MainActivity extends AppCompatActivity {
-
-    Toolbar toolbar;
     ListView listView;
-    public ArrayList<Counter> counters = new ArrayList<>();
-    public ArrayAdapter<Counter> mAdapter;
+    private ArrayList<Counter> counters = new ArrayList<>();
+    private ArrayAdapter<Counter> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +29,20 @@ public class MainActivity extends AppCompatActivity {
         counters.add(new Counter("counter4", 0));
         counters.add(new Counter("counter5", 0));
         counters.add(new Counter("counter6", 0));
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("CountBook");
+
         listView = (ListView) findViewById(R.id.listView);
 
         /*ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray(R.array.countries));*/
-        ArrayAdapter<Counter> mAdapter = new ArrayAdapter<Counter>(MainActivity.this,
+        mAdapter = new ArrayAdapter<Counter>(MainActivity.this,
                 android.R.layout.simple_list_item_1,
                 counters);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                Intent intent = new Intent(MainActivity.this, CounterInterface.class);
                 //intent.putExtra("CountryName", listView.getItemAtPosition(i).toString());
                 intent.putExtra("CounterName", counters.get(i).getName());
                 intent.putExtra("currentValuer", counters.get(i).getCurrentValue());
@@ -55,9 +50,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         listView.setAdapter(mAdapter);
-
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -70,5 +64,5 @@ public class MainActivity extends AppCompatActivity {
                 //Write your code if there's no result
             }
         }
-    }//onActivityResult
+    }
 }
