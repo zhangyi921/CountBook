@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CounterInterface extends AppCompatActivity {
@@ -14,12 +15,19 @@ public class CounterInterface extends AppCompatActivity {
     private String comment;
     private int counterIndex;
     private int initialValue;
+    private EditText InitialVal;
+    private EditText CurrentVal;
+    private EditText Comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter_interface);
         TextView name = (TextView) findViewById(R.id.name);
+        TextView date = (TextView) findViewById(R.id.Date);
+        InitialVal = (EditText) findViewById(R.id.InitialVal);
+        CurrentVal = (EditText) findViewById(R.id.CurrentVal);
+        Comment = (EditText) findViewById(R.id.Comment);
 
 
         Bundle mBundle = getIntent().getExtras();
@@ -27,17 +35,17 @@ public class CounterInterface extends AppCompatActivity {
             String CounterName = mBundle.getString("CounterName");
             name.setText("Name: "+CounterName);
             String Date = mBundle.getString("date");
+            date.setText("Date: "+Date);
             counterIndex = mBundle.getInt("index");
             initialValue = mBundle.getInt("initialValue");
+            Integer temp = new Integer(initialValue);
+            InitialVal.setText(temp.toString());
             comment = mBundle.getString("comment");
+            Comment.setText(comment);
             currentValuer = mBundle.getInt("currentValuer");
-            Log.i("debug", CounterName);
-            String val;
-            if (currentValuer == 0) {
-                val = "0";
-            } else
-                val = "did not get current value";
-            Log.i("debug", val);
+            temp = new Integer(currentValuer);
+            CurrentVal.setText(temp.toString());
+
         }
 
         Button goBack = (Button) findViewById(R.id.goBack);
@@ -52,5 +60,34 @@ public class CounterInterface extends AppCompatActivity {
                 finish();
             }
         });
+        Button increa = (Button) findViewById(R.id.increa);
+        increa.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                currentValuer = currentValuer+1;
+                Integer temp = new Integer(currentValuer);
+                CurrentVal.setText(temp.toString());
+
+            }
+        });
+        Button decrea = (Button) findViewById(R.id.decrea);
+        decrea.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if (currentValuer != 0){
+                    currentValuer = currentValuer-1;
+                    Integer temp = new Integer(currentValuer);
+                    CurrentVal.setText(temp.toString());
+                }
+                
+            }
+        });
+        Button reset = (Button) findViewById(R.id.Rest);
+        reset.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                currentValuer = initialValue;
+                Integer temp = new Integer(currentValuer);
+                CurrentVal.setText(temp.toString());
+            }
+        });
     }
+
 }

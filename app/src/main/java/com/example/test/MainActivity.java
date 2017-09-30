@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        counters.add(new Counter("counter1", 0));
+        counters.add(new Counter("counter1", 0, "test!!!"));
         counters.add(new Counter("counter2", 0));
         counters.add(new Counter("counter3", 0));
         counters.add(new Counter("counter4", 0));
