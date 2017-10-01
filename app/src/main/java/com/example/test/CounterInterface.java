@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CounterInterface extends AppCompatActivity {
     private int currentValuer;
@@ -85,10 +86,14 @@ public class CounterInterface extends AppCompatActivity {
         Button decrea = (Button) findViewById(R.id.decrea);
         decrea.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                if (currentValuer != 0){
+                if (currentValuer > initialValue){
                     currentValuer = currentValuer-1;
                     Integer temp = new Integer(currentValuer);
                     CurrentVal.setText(temp.toString());
+                }
+                else{
+                    Toast.makeText(CounterInterface.this,"Cannot decrement any more!",Toast.LENGTH_LONG).show();
+
                 }
 
             }

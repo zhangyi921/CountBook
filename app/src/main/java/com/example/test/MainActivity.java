@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -30,6 +31,7 @@ import com.google.gson.reflect.TypeToken;
 public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "file.sav";
     ListView listView;
+    TextView NumOfCo;
     private ArrayList<Counter> counters = new ArrayList<>();
     private ArrayAdapter<Counter> mAdapter;
 
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         counters.add(new Counter("counter6", 0));
 */
         listView = (ListView) findViewById(R.id.listView);
+        NumOfCo = (TextView) findViewById(R.id.NunOfCo);
+        /*Integer temp = new Integer(counters.size());
+        Log.i("debug", temp.toString());*/
+        //Log.i("debug",
+        //NumOfCo.setText("number of counters: "+temp.toString());
 
         /*ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1,
@@ -106,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
                 saveInFile();
             }
         }
+        Integer temp = new Integer(counters.size());
+        //Log.i("debug", temp.toString());
+        NumOfCo.setText("number of counters: "+temp.toString());
+
     }
     @Override
     protected void onStart() {
@@ -116,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,
                 counters);
         listView.setAdapter(mAdapter);
+        Integer temp = new Integer(counters.size());
+        Log.i("debug", "HHhh"+temp.toString());
+        NumOfCo.setText("number of counters: "+temp.toString());
     }
     private void loadFromFile() {
         //ArrayList<String> tweets = new ArrayList<String>();

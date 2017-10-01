@@ -21,16 +21,26 @@
 
     <Button
         android:id="@+id/add"
-        android:layout_width="237dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="162dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="7dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="create new counter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="449dp" />
+        app:layout_constraintHorizontal_bias="0.961"
+        tools:layout_editor_absoluteY="442dp" />
+
+    <TextView
+        android:id="@+id/NunOfCo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="7dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
