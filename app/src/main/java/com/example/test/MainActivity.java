@@ -27,10 +27,13 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+/*
+* this is the main activity that handles the main interface
+* */
 public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "file.sav";
     ListView listView;
+    //NumOfCon stores the number of counters
     TextView NumOfCo;
     private ArrayList<Counter> counters = new ArrayList<>();
     private ArrayAdapter<Counter> mAdapter;
@@ -40,24 +43,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*counters.add(new Counter("counter1", 0, "test!!!"));
-        counters.add(new Counter("counter2", 0));
-        counters.add(new Counter("counter3", 0));
-        counters.add(new Counter("counter4", 0));
-        counters.add(new Counter("counter5", 0));
-        counters.add(new Counter("counter6", 0));
-*/
         listView = (ListView) findViewById(R.id.listView);
         NumOfCo = (TextView) findViewById(R.id.NunOfCo);
-        /*Integer temp = new Integer(counters.size());
-        Log.i("debug", temp.toString());*/
-        //Log.i("debug",
-        //NumOfCo.setText("number of counters: "+temp.toString());
 
-        /*ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1,
-                getResources().getStringArray(R.array.countries));*/
-
+        /*
+        * set an listView onClick listener
+        * send data of clicked counter to CounterInterface activity
+        * */
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -74,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * add a new counter
+        * start CreaterInterface activity
+        * */
+
         Button add = (Button) findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -86,7 +83,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        /*
+        * requestCode = 1 means the app was back form CounterInterface activity
+        * it extracts all data and update the counter that user interacted
+        * */
+
         if (requestCode == 1) {
+            /*
+            * user clicked save, save all data
+            * */
             if(resultCode == Activity.RESULT_OK){
                 int counterIndex = data.getIntExtra("counterIndex",-1);
                 String comment = data.getStringExtra("comment");
@@ -97,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 saveInFile();
 
             }
+            /*user clicked delete, delete the counter
+            * */
             if (resultCode == Activity.RESULT_CANCELED) {
                 //delete current counter
                 counters.remove(data.getIntExtra("counterIndex",-1));
@@ -104,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
                 saveInFile();
             }
         }
+        /*
+        * user created a new counter
+        * initialized the new counter and add it to counter ArrayList
+        * */
         else if (requestCode == 2){
             if (resultCode == Activity.RESULT_OK){
                 counters.add(new Counter(data.getStringExtra("name"),

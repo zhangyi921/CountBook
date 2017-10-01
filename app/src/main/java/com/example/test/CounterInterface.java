@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/*
+* this is the interface that user can do all the interaction with a counter
+* including increment, decrement, reset,delete the counter
+* */
 public class CounterInterface extends AppCompatActivity {
     private int currentValuer;
     private String comment;
@@ -30,7 +33,9 @@ public class CounterInterface extends AppCompatActivity {
         CurrentVal = (EditText) findViewById(R.id.CurrentVal);
         Comment = (EditText) findViewById(R.id.Comment);
 
-
+        /*
+        * here extract all data fom bundle
+        * */
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
             String CounterName = mBundle.getString("CounterName");
@@ -48,7 +53,10 @@ public class CounterInterface extends AppCompatActivity {
             CurrentVal.setText(temp.toString());
 
         }
-
+        /*
+        * goBack button means save and go back
+        * it put all data in a bundle and return it to main activity
+        * */
         Button goBack = (Button) findViewById(R.id.goBack);
         goBack.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -58,12 +66,16 @@ public class CounterInterface extends AppCompatActivity {
                 returnIntent.putExtra("counterIndex",counterIndex);
                 Integer temp = new Integer(InitialVal.getText().toString());
                 returnIntent.putExtra("initialValue", temp);
-                returnIntent.putExtra("currentValuer", currentValuer);
+                temp = new Integer(CurrentVal.getText().toString());
+                returnIntent.putExtra("currentValuer", temp);
                 returnIntent.putExtra("comment",Comment.getText().toString());
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
+        /*
+        * delete the current conter
+        * */
         Button delet = (Button) findViewById(R.id.delet);
         delet.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -74,21 +86,31 @@ public class CounterInterface extends AppCompatActivity {
                 finish();
             }
         });
+        /*
+        * increment the current value, based on the current value in the
+        * textView box
+        * */
         Button increa = (Button) findViewById(R.id.increa);
         increa.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                currentValuer = currentValuer+1;
-                Integer temp = new Integer(currentValuer);
+                Integer temp = new Integer(CurrentVal.getText().toString());
+                temp = temp+1;
+                currentValuer = temp.intValue();
                 CurrentVal.setText(temp.toString());
 
             }
         });
+        /*
+        * decrement the current value based on the current value in the
+        * textView box
+        * */
         Button decrea = (Button) findViewById(R.id.decrea);
         decrea.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                if (currentValuer > initialValue){
-                    currentValuer = currentValuer-1;
-                    Integer temp = new Integer(currentValuer);
+                if (currentValuer > 0){
+                    Integer temp = new Integer(CurrentVal.getText().toString());
+                    temp = temp-1;
+                    currentValuer = temp.intValue();
                     CurrentVal.setText(temp.toString());
                 }
                 else{
@@ -98,6 +120,9 @@ public class CounterInterface extends AppCompatActivity {
 
             }
         });
+        /*
+        * reset the current value to its initial value
+        * */
         Button reset = (Button) findViewById(R.id.Rest);
         reset.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

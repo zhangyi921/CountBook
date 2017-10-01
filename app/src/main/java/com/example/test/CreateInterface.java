@@ -11,7 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+/*
+* when user clicked created new counter, user will be lead to this activity
+* user are prompted to enter proper data for the new counter
+* once user finished entering the data for a counter, this will return all data
+* to main activity
+* */
 public class CreateInterface extends AppCompatActivity {
     EditText name;
     EditText initialValue;
@@ -25,6 +30,10 @@ public class CreateInterface extends AppCompatActivity {
         initialValue = (EditText) findViewById(R.id.InitialValue);
         comment = (EditText) findViewById(R.id.comment);
         Button create = (Button) findViewById(R.id.add);
+        /*
+        * get data form interface
+        * send them to main activity interface
+        * */
         create.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 //alertDialog.show();
