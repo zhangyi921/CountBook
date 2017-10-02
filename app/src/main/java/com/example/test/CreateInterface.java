@@ -1,9 +1,7 @@
 package com.example.test;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,9 +16,9 @@ import android.widget.Toast;
 * to main activity
 * */
 public class CreateInterface extends AppCompatActivity {
-    EditText name;
-    EditText initialValue;
-    EditText comment;
+    private EditText name;
+    private EditText initialValue;
+    private EditText comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

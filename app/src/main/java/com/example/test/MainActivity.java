@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,9 +31,9 @@ import com.google.gson.reflect.TypeToken;
 * */
 public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "file.sav";
-    ListView listView;
+    private ListView listView;
     //NumOfCon stores the number of counters
-    TextView NumOfCo;
+    private TextView NumOfCo;
     private ArrayList<Counter> counters = new ArrayList<>();
     private ArrayAdapter<Counter> mAdapter;
 
@@ -125,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         Integer temp = new Integer(counters.size());
-        //Log.i("debug", temp.toString());
         NumOfCo.setText("number of counters: "+temp.toString());
 
     }
