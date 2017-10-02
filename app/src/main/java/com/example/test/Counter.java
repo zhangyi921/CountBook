@@ -5,7 +5,11 @@ import java.util.Date;
 /**
  * Created by Yi on 2017/9/29.
  */
-
+/*
+* Counter class contains all data of a counter and all
+* method to construct and interact with it
+*
+* */
 public class Counter {
 
     private String name;
@@ -13,13 +17,6 @@ public class Counter {
     private int currentValue;
     private Date date;
     private String comment;
-
-    public Counter(String name, int initialValue){
-        this.name = name;
-        this.initialValue = initialValue;
-        this.currentValue = initialValue;
-        this.date = new Date();
-    }
 
     public Counter(String name, int initialValue, String comment){
         this.name = name;
